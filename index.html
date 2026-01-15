@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saivision - Local AI Runner</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <div class="nav-content">
+      <div class="logo">
+        <img src="logo.png" alt="Saivision">
+        <span>Saivision</span>
+      </div>
+      <div class="status">
+        <div class="status-dot"></div>
+        <span>Local Runtime</span>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <section class="connection" id="connectionSection">
+        <div class="connection-box">
+          <h1>Connect to Ollama</h1>
+          <p>Establish connection to your local Ollama instance</p>
+          <button id="connectBtn" class="btn-connect">Connect to Ollama</button>
+          <div id="connectionStatus" class="connection-status"></div>
+        </div>
+      </section>
+
+      <section class="hero" id="mainContent" style="display: none;">
+        <h1>Run AI Models Locally</h1>
+        <p>Privacy-first AI inference on your own hardware</p>
+      </section>
+
+      <section class="models" style="display: none;">
+        <h2>Available Models</h2>
+        <div class="model-grid">
+          <div class="model-card">
+            <div class="model-header">
+              <h3>Llama 3.2</h3>
+              <span class="badge">3B</span>
+            </div>
+            <p>Fast and efficient language model</p>
+            <button class="btn-load" data-model="llama-3.2">Load Model</button>
+          </div>
+
+          <div class="model-card">
+            <div class="model-header">
+              <h3>Mistral</h3>
+              <span class="badge">7B</span>
+            </div>
+            <p>Powerful open-source model</p>
+            <button class="btn-load" data-model="mistral">Load Model</button>
+          </div>
+
+          <div class="model-card">
+            <div class="model-header">
+              <h3>Phi-3</h3>
+              <span class="badge">3.8B</span>
+            </div>
+            <p>Compact and capable</p>
+            <button class="btn-load" data-model="phi-3">Load Model</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="chat" id="chatSection" style="display: none;">
+        <div class="chat-header">
+          <h2>Chat Interface</h2>
+          <span class="model-name" id="activeModel">No model loaded</span>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+          <div class="welcome-message">
+            Load a model to start chatting
+          </div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="messageInput" placeholder="Type your message..." disabled>
+          <button id="sendBtn" disabled>Send</button>
+        </div>
+      </section>
+
+      <section class="tools-panel" style="display: none;" id="toolsPanel">
+        <h2>Advanced Tools</h2>
+        <div class="tools-grid">
+          <div class="tool-item">
+            <h4>Model Analyzer</h4>
+            <p>Analyze model performance</p>
+          </div>
+          <div class="tool-item">
+            <h4>Prompt Templates</h4>
+            <p>Pre-built prompt library</p>
+          </div>
+          <div class="tool-item">
+            <h4>Export Chat</h4>
+            <p>Save conversations</p>
+          </div>
+          <div class="tool-item">
+            <h4>Batch Processing</h4>
+            <p>Process multiple inputs</p>
+          </div>
+          <div class="tool-item">
+            <h4>API Tester</h4>
+            <p>Test Ollama endpoints</p>
+          </div>
+          <div class="tool-item">
+            <h4>Model Comparison</h4>
+            <p>Compare outputs</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-panel" style="display: none;" id="settingsPanel">
+        <h2>Configuration</h2>
+        <div class="setting-row">
+          <label>Temperature</label>
+          <input type="range" min="0" max="2" step="0.1" value="0.7" id="tempSlider">
+        </div>
+        <div class="setting-row">
+          <label>Max Tokens</label>
+          <input type="range" min="100" max="4096" step="100" value="2048" id="maxTokens">
+        </div>
+        <div class="setting-row">
+          <label>Context Window</label>
+          <select id="contextWindow">
+            <option value="2048">2048</option>
+            <option value="4096" selected>4096</option>
+            <option value="8192">8192</option>
+          </select>
+        </div>
+        <div class="setting-row">
+          <label>Response Format</label>
+          <select id="responseFormat">
+            <option value="text">Text</option>
+            <option value="json">JSON</option>
+            <option value="markdown">Markdown</option>
+          </select>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
